@@ -19,7 +19,7 @@ $arSite = $rsSites->Fetch();
         $asset->addCss(SITE_TEMPLATE_PATH . '/assets/fontawesome/css/all.min.css');
         $asset->addCss(SITE_TEMPLATE_PATH . '/assets/slick/slick.css');
         $asset->addCss(SITE_TEMPLATE_PATH . '/assets/css/styles.css');
-        $asset->addCss(SITE_TEMPLATE_PATH . '/assets/css/custom.css');
+        $asset->addCss('/include/template/css/custom.css');
 
         $asset->addJs(SITE_TEMPLATE_PATH . '/assets/js/jquery-3.4.1.min.js');
         $asset->addJs(SITE_TEMPLATE_PATH . '/assets/js/popper.min.js');
@@ -27,6 +27,7 @@ $arSite = $rsSites->Fetch();
         $asset->addJs(SITE_TEMPLATE_PATH . '/assets/slick/slick.min.js');
         $asset->addJs(SITE_TEMPLATE_PATH . '/assets/js/jquery.maskedinput.js');
         $asset->addJs(SITE_TEMPLATE_PATH . '/assets/js/scripts.js');
+        $asset->addJs('/include/template/js/custom.js');
         ?>
 
         <title><?= $arSite['NAME']; ?>: <? $APPLICATION->ShowTitle(); ?></title>
