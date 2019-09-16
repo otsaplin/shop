@@ -1,0 +1,28 @@
+.filter-block__cat li {
+    padding: 0 7px;
+}
+
+.filter-block__cat li span {
+    color: #b5b5b5 !important;
+    font-size: .9rem;
+    margin-left: .5rem;
+}
+
+.filter-block__depth_2 {
+    margin-left: 15px;
+}
+
+.filter-block__depth_3 {
+    margin-left: 30px;
+}
+
+.filter-block__current {
+    padding: 5px 7px !important;
+    background: #000;
+    border-radius: 3px;
+}
+
+.filter-block__current a,
+.filter-block__current a:hover {
+    color: #fff !important;
+}
