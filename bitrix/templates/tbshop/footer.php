@@ -1,6 +1,11 @@
 <?
+
+use \Bitrix\Main\Localization\Loc;
+
 if (!defined("B_PROLOG_INCLUDED") || B_PROLOG_INCLUDED !== true)
     die();
+
+global $USER;
 ?>
 <div class="footer__space"></div>
 <div class="footer">
@@ -107,7 +112,7 @@ if (!defined("B_PROLOG_INCLUDED") || B_PROLOG_INCLUDED !== true)
 
 </div>
 
-<? // Basket modal ?>
+<? // Basket modal  ?>
 <div class="modal fade" id="basket-modal" tabindex="-1" role="dialog" aria-hidden="true">
     <div class="modal-dialog modal-dialog-centered" role="document">
         <div class="modal-content">
@@ -125,8 +130,9 @@ if (!defined("B_PROLOG_INCLUDED") || B_PROLOG_INCLUDED !== true)
         </div>
     </div>
 </div>
+<? // END Basket modal ?>
 
-<? // Callback modal ?>
+<? // Callback modal  ?>
 <div class="modal fade" id="callback-modal" tabindex="-1" role="dialog" aria-hidden="true">
     <div class="modal-dialog modal-dialog-centered" role="document">
         <div class="modal-content">
@@ -166,6 +172,39 @@ if (!defined("B_PROLOG_INCLUDED") || B_PROLOG_INCLUDED !== true)
         </div>
     </div>
 </div>
+<? // END Callback modal ?>
+
+<? // Registration modal  ?>
+<? if (!$USER->IsAuthorized()) { ?>
+    <div class="modal fade" id="registration-modal" tabindex="-1" role="dialog" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title"><?= Loc::getMessage('REGISTRATION_MODAL'); ?></h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <div class="px-4 px-sm-5 py-4">
+                        <?
+                        $APPLICATION->IncludeComponent(
+                                "bitrix:main.include", "", Array(
+                            "AREA_FILE_SHOW" => "file",
+                            "AREA_FILE_SUFFIX" => "inc",
+                            "EDIT_TEMPLATE" => "",
+                            "PATH" => "/include/user.registration.php",
+                            "FORM_ID" => "REG_MODAL"
+                                )
+                        );
+                        ?>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+<? } ?>
+<? // End modal  ?>
 
 </body>
 </html>

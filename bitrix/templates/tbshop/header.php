@@ -1,17 +1,25 @@
-<?
+<?php
+
+use \Bitrix\Main\Config\Option;
+use \Bitrix\Main\Page\Asset;
+use \Bitrix\Main\Localization\Loc;
+
 if (!defined("B_PROLOG_INCLUDED") || B_PROLOG_INCLUDED !== true)
     die();
 
-$asset = \Bitrix\Main\Page\Asset::getInstance();
+Loc::loadMessages(__FILE__);
+
+$asset = Asset::getInstance();
 
 global $APPLICATION;
+global $USER;
+
 $rsSites = CSite::GetByID(SITE_ID);
 $arSite = $rsSites->Fetch();
 ?>
 <!doctype html>
 <html lang="<?= ($arSite["LANGUAGE_ID"] == "ru") ? "ru" : "en" ?>">
     <head>
-        <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
         <?
@@ -61,14 +69,20 @@ $arSite = $rsSites->Fetch();
                             ?>
                         </div>
                         <div class="col-12 col-lg-6">
-                            <? /*
-                            <ul class="top-header__menu float-right ul_clear">
-                                <li class="mr-2"><a href="#"><i class="far fa-user"></i> Вход</a></li>
-                                <li class="mr-2">|</li>
-                                <li><a href="#"><i class="fas fa-lock"></i> Регистрация</a></li>
-                            </ul> 
-                             * 
-                             */?>
+                            <? if ($USER->isAuthorized()) { ?>
+                            <? } else { ?>
+                                <? if (Option::get('main', 'new_user_phone_auth', 'N') == 'Y') { ?>
+                                    <ul class="top-header__menu float-right ul_clear">
+                                        <li><a href="#" data-toggle="modal" data-target="#registration-modal"><i class="fas fa-user"></i> <?= Loc::getMessage('USER_DO_AUTH'); ?></a></li>
+                                    </ul>
+                                <? } else { ?>
+                                    <ul class="top-header__menu float-right ul_clear">
+                                        <li class="mr-2"><a href="#"><i class="far fa-user"></i> <?= Loc::getMessage('USER_AUTH'); ?></a></li>
+                                        <li class="mr-2">|</li>
+                                        <li><a href="#" data-toggle="modal" data-target="#registration-modal"><i class="fas fa-lock"></i> <?= Loc::getMessage('USER_REGISTRATION'); ?></a></li>
+                                    </ul>
+                                <? } ?>
+                            <? } ?>
                         </div>
                     </div>
                 </div>
@@ -93,7 +107,7 @@ $arSite = $rsSites->Fetch();
                             <div class="col-lg-4 d-none d-lg-block">
                                 <div class="fbutton mt-2">
                                     <form action="/search/" method="GET">
-                                        <input type="text" class="form-control" name="q" autocomplete="off" placeholder="Поиск" />
+                                        <input type="text" class="form-control" name="q" autocomplete="off" placeholder="<?= Loc::getMessage('INPUT_SEARCH'); ?>" />
                                         <button type="submit">
                                             <i class="fas fa-search"></i>
                                         </button>
@@ -184,7 +198,7 @@ $arSite = $rsSites->Fetch();
                             <div class="col-12 d-lg-none mt-3">
                                 <div class="fbutton mt-2">
                                     <form action="/search/" method="GET">
-                                        <input type="text" class="form-control" name="q" autocomplete="off" placeholder="Поиск" />
+                                        <input type="text" class="form-control" name="q" autocomplete="off" placeholder="<?= Loc::getMessage('INPUT_SEARCH'); ?>" />
                                         <button type="submit">
                                             <i class="fas fa-search"></i>
                                         </button>

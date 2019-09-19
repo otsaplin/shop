@@ -1,0 +1,29 @@
+{
+  "name": "jquery-countdown-timer-control",
+  "version": "1.0.3",
+  "description": "jQuery countdown timer plugin with optional control button",
+  "main": "jquery-countdown-timer-control.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/lighthanabi/jQuery-countdown-timer-control.git"
+  },
+  "keywords": [
+    "countdown",
+    "control",
+    "timer",
+    "jquery-plugin",
+    "ecosystem:jquery"
+  ],
+  "dependencies": {
+    "jquery": ">=1.12.4"
+  },
+  "author": "lighthanabi",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/lighthanabi/jQuery-countdown-timer-control/issues"
+  },
+  "homepage": "https://github.com/lighthanabi/jQuery-countdown-timer-control#readme"
+}
