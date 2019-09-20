@@ -56,6 +56,8 @@ class TbUserRegistrationComponent extends CBitrixComponent
         if (in_array('PASSWORD', $arParams['SHOW_FIELDS'])) {
             unset($arParams['SHOW_FIELDS'][array_search('PASSWORD', $arParams['SHOW_FIELDS'])]);
             unset($arParams['SHOW_FIELDS'][array_search('CONFIRM_PASSWORD', $arParams['SHOW_FIELDS'])]);
+            unset($arParams['REQUIRED_FIELDS'][array_search('PASSWORD', $arParams['REQUIRED_FIELDS'])]);
+            unset($arParams['REQUIRED_FIELDS'][array_search('CONFIRM_PASSWORD', $arParams['REQUIRED_FIELDS'])]);
 
             $arParams['SHOW_FIELDS'][] = 'PASSWORD';
             $arParams['REQUIRED_FIELDS'][] = 'PASSWORD';
