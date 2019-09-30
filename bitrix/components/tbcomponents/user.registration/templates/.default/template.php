@@ -1,5 +1,4 @@
 <?
-
 use \Bitrix\Main\Page\Asset;
 use \Bitrix\Main\Localization\Loc;
 
@@ -97,7 +96,7 @@ if (!IsModuleInstalled('tb.shop'))
                 if ($arResult['NEW_USER_PHONE_AUTH'] == 'Y' && empty($_SESSION['SMS_REG']['SENT']))
                     $btnMsg = Loc::getMessage('FORM_SUBMIT_REG_SMS');
                 ?>
-                <button type="submit" class="btn btn-md btn_red" data-loading-text="<?= $btnMsg; ?>" data-loading-img="<?= SITE_TEMPLATE_PATH; ?>/assets/img/loading_btn.gif"><?= $btnMsg; ?></button>
+                <button type="submit" class="btn btn-md btn-primary" data-loading-text="<?= $btnMsg; ?>" data-loading-img="<?= SITE_TEMPLATE_PATH; ?>/assets/img/loading_btn.gif"><?= $btnMsg; ?></button>
             </div>
         </div>
         <div class="alert alert-danger mt-4" role="alert" style="display: none;"><ul></ul></div>

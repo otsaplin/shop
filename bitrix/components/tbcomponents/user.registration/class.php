@@ -54,10 +54,17 @@ class TbUserRegistrationComponent extends CBitrixComponent
                 $arParams['REQUIRED_FIELDS'][] = 'EMAIL';
 
         if (in_array('PASSWORD', $arParams['SHOW_FIELDS'])) {
-            unset($arParams['SHOW_FIELDS'][array_search('PASSWORD', $arParams['SHOW_FIELDS'])]);
-            unset($arParams['SHOW_FIELDS'][array_search('CONFIRM_PASSWORD', $arParams['SHOW_FIELDS'])]);
-            unset($arParams['REQUIRED_FIELDS'][array_search('PASSWORD', $arParams['REQUIRED_FIELDS'])]);
-            unset($arParams['REQUIRED_FIELDS'][array_search('CONFIRM_PASSWORD', $arParams['REQUIRED_FIELDS'])]);
+            if ($tmp = array_search('PASSWORD', $arParams['SHOW_FIELDS']))
+                unset($arParams['SHOW_FIELDS'][$tmp]);
+
+            if ($tmp = array_search('CONFIRM_PASSWORD', $arParams['SHOW_FIELDS']))
+                unset($arParams['SHOW_FIELDS'][$tmp]);
+
+            if ($tmp = array_search('PASSWORD', $arParams['REQUIRED_FIELDS']))
+                unset($arParams['REQUIRED_FIELDS'][$tmp]);
+
+            if ($tmp = array_search('CONFIRM_PASSWORD', $arParams['REQUIRED_FIELDS']))
+                unset($arParams['REQUIRED_FIELDS'][$tmp]);
 
             $arParams['SHOW_FIELDS'][] = 'PASSWORD';
             $arParams['REQUIRED_FIELDS'][] = 'PASSWORD';
@@ -298,9 +305,9 @@ class TbUserRegistrationComponent extends CBitrixComponent
 
         if ($arUser) {
             global $USER;
-            
+
             unset($_SESSION['SMS_REG']);
-            
+
             $USER->Authorize($arUser['ID'], true);
         }
 
