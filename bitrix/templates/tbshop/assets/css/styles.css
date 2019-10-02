@@ -441,13 +441,7 @@ html, body {
     padding: 0 10px;
 }
 
-.catalog__nwrap {
-    display: table;
-    width: 100%;
-}
-
 .catalog__name {
-    display: table-cell;
     width: 100%;
     vertical-align: middle;
     text-align: center;
@@ -456,8 +450,20 @@ html, body {
 
 .catalog__name a {
     display: block;
-    height: 3.6rem;
+    min-height: 3.6rem;
     overflow: hidden;
+}
+
+.catalog__hidden-name {
+    display: none;
+}
+
+.catalog__item:hover .catalog__hidden-name {
+    display: initial;
+}
+
+.catalog__item:hover .catalog__points-name {
+    display: none;
 }
 
 .btn__add-to-basket {
@@ -548,17 +554,23 @@ html, body {
     padding: 0 10px;
 }
 
-.v-catalog__nwrap {
-    display: table;
-    width: 100%;
-}
-
 .v-catalog__name {
-    display: table-cell;
     width: 100%;
     vertical-align: middle;
     text-align: center;
     padding: 0 10px;
+}
+
+.v-catalog__hidden-name {
+    display: none;
+}
+
+.v-catalog__item:hover .v-catalog__hidden-name {
+    display: initial;
+}
+
+.v-catalog__item:hover .v-catalog__points-name {
+    display: none;
 }
 
 .v-catalog__name a {

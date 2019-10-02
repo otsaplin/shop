@@ -48,6 +48,14 @@ foreach ($arResult['ITEMS'] as &$arItem) {
             'HEIGHT' => '624',
             'SRC' => SITE_TEMPLATE_PATH . '/assets/img/nopic.png',
         ];
+
+    // max name lenth
+    if (!empty($arParams['MAX_NAME_LENGTH']) && strlen($arItem['NAME']) > $arParams['MAX_NAME_LENGTH']) {
+        $tmpFirst = substr($arItem['NAME'], 0, $arParams['MAX_NAME_LENGTH']);
+        $tmpSecond = substr($arItem['NAME'], $arParams['MAX_NAME_LENGTH']);
+        
+        $arItem['NAME'] = $tmpFirst . '<span class="catalog__points-name">...</span><span class="catalog__hidden-name">' . $tmpSecond . '</span>';
+    }
 }
 
 // Items cnt

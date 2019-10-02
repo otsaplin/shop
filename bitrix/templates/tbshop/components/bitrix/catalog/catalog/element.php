@@ -165,6 +165,7 @@ if (!defined("B_PROLOG_INCLUDED") || B_PROLOG_INCLUDED !== true)
     <?
     $APPLICATION->IncludeComponent(
             "bitrix:catalog.products.viewed", "viewed", Array(
+        "MAX_NAME_LENGTH" => $arParams["MAX_NAME_LENGTH"],
         "ACTION_VARIABLE" => "action_cpv",
         "ADDITIONAL_PICT_PROP_1" => "-",
         "ADDITIONAL_PICT_PROP_2" => "-",
