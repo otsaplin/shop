@@ -30,17 +30,17 @@ foreach ($arResult['ITEMS'] as &$arItem) {
         $arImgs[] = $arItem['DETAIL_PICTURE'];
 
     if (!empty($arItem['PROPERTIES']['SYSTEM_IMAGES']['VALUE']) && count($arImgs) < 2)
-        $arImgs[] = array_merge($arImgs, $arItem['PROPERTIES']['SYSTEM_IMAGES']['VALUE']);
+        foreach ($arItem['PROPERTIES']['SYSTEM_IMAGES']['VALUE'] as $val)
+            $arImgs[] = array_merge($arImgs, ['ID' => $val]);
 
-    if (!empty($arImgs))
-        foreach ($arImgs as $val) {
-            $tmpImg = \CFile::ResizeImageGet($val, ['width' => '400', 'height' => '400'], BX_RESIZE_IMAGE_PROPORTIONAL_ALT, true);
-            $arItem['DISPLAY_PICTURE'][] = [
-                'WIDTH' => $tmpImg['width'],
-                'HEIGHT' => $tmpImg['height'],
-                'SRC' => $tmpImg['src'],
-            ];
-        }
+    foreach ($arImgs as $arVal) {
+        $tmpImg = \CFile::ResizeImageGet($arVal['ID'], ['width' => '400', 'height' => '400'], BX_RESIZE_IMAGE_PROPORTIONAL_ALT, true);
+        $arItem['DISPLAY_PICTURE'][] = [
+            'WIDTH' => $tmpImg['width'],
+            'HEIGHT' => $tmpImg['height'],
+            'SRC' => $tmpImg['src'],
+        ];
+    }
 
     if (empty($arItem['DISPLAY_PICTURE']))
         $arItem['DISPLAY_PICTURE'][] = [

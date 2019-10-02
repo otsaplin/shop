@@ -174,6 +174,38 @@ global $USER;
 </div>
 <? // END Callback modal ?>
 
+<? // Auth modal ?>
+<? if (!$USER->IsAuthorized()) { ?>
+    <div class="modal fade" id="auth-modal" tabindex="-1" role="dialog" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title"><?= Loc::getMessage('AUTH_MODAL'); ?></h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <div class="px-4 px-sm-5 py-4">
+                        <?
+                        $APPLICATION->IncludeComponent(
+                                "bitrix:main.include", "", Array(
+                            "AREA_FILE_SHOW" => "file",
+                            "AREA_FILE_SUFFIX" => "inc",
+                            "EDIT_TEMPLATE" => "",
+                            "PATH" => "/include/user.auth.php",
+                            "FORM_ID" => "AUTH_MODAL"
+                                )
+                        );
+                        ?>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+<? } ?>
+<? // END Auth modal ?>
+
 <? // Registration modal  ?>
 <? if (!$USER->IsAuthorized()) { ?>
     <div class="modal fade" id="registration-modal" tabindex="-1" role="dialog" aria-hidden="true">

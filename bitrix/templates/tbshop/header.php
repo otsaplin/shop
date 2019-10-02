@@ -77,7 +77,7 @@ $arSite = $rsSites->Fetch();
                                     </ul>
                                 <? } else { ?>
                                     <ul class="top-header__menu float-right ul_clear">
-                                        <li class="mr-2"><a href="#"><i class="far fa-user"></i> <?= Loc::getMessage('USER_AUTH'); ?></a></li>
+                                        <li class="mr-2"><a href="#" data-toggle="modal" data-target="#auth-modal"><i class="far fa-user"></i> <?= Loc::getMessage('USER_AUTH'); ?></a></li>
                                         <li class="mr-2">|</li>
                                         <li><a href="#" data-toggle="modal" data-target="#registration-modal"><i class="fas fa-lock"></i> <?= Loc::getMessage('USER_REGISTRATION'); ?></a></li>
                                     </ul>

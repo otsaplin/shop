@@ -33,8 +33,3 @@ $class = ($arParams['VIEW_ITEMS'] == '4') ? 'col-12 col-sm-6 col-md-4 col-lg-3' 
 <? $this->SetViewTarget('title_counter'); ?>
 <span><?= $arResult['CNT_STRING']; ?></span>
 <? $this->EndViewTarget(); ?>
-<?
-//echo '<pre>';
-//print_r($arResult);
-//echo '</pre>';
-?>
