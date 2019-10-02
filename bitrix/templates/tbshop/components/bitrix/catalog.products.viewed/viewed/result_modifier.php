@@ -28,10 +28,14 @@ foreach ($arResult['ITEMS'] as &$arItem) {
     $arImgs = [];
 
     if (!empty($arItem['PREVIEW_PICTURE']['ID']) && count($arImgs) < 2)
-        $arImgs[] = $arItem['PREVIEW_PICTURE']['ID'];
+        $arImgs[] = [
+            'ID' => $arItem['PREVIEW_PICTURE']['ID']
+        ];
 
     if (!empty($arItem['DETAIL_PICTURE']['ID']) && count($arImgs) < 2)
-        $arImgs[] = $arItem['DETAIL_PICTURE']['ID'];
+        $arImgs[] = [
+            'ID' => $arItem['DETAIL_PICTURE']['ID']
+        ];
 
     if (!empty($arItem['PROPERTIES']['SYSTEM_IMAGES']['VALUE']) && count($arImgs) < 2)
         foreach ($arItem['PROPERTIES']['SYSTEM_IMAGES']['VALUE'] as $val)
