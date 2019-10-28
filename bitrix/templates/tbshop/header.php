@@ -13,14 +13,12 @@ $asset = Asset::getInstance();
 
 global $APPLICATION;
 global $USER;
-
-$rsSites = CSite::GetByID(SITE_ID);
-$arSite = $rsSites->Fetch();
 ?>
 <!doctype html>
-<html lang="<?= ($arSite["LANGUAGE_ID"] == "ru") ? "ru" : "en" ?>">
+<html lang="ru">
     <head>
         <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+        <link rel="shortcut icon" href="/favicon.ico" type="image/x-icon">
 
         <?
         $asset->addCss(SITE_TEMPLATE_PATH . '/assets/bootstrap/css/bootstrap.min.css');
@@ -38,7 +36,7 @@ $arSite = $rsSites->Fetch();
         $asset->addJs('/include/template/js/custom.js');
         ?>
 
-        <title><?= $arSite['NAME']; ?>: <? $APPLICATION->ShowTitle(); ?></title>
+        <title><? $APPLICATION->ShowTitle(); ?></title>
 
         <? $APPLICATION->ShowHead(); ?>
     </head>
@@ -209,27 +207,57 @@ $arSite = $rsSites->Fetch();
                     </div>
                 </div>
             </div>
-
             <?
-            $APPLICATION->IncludeComponent(
-                    "bitrix:catalog.section.list", "main-menu", Array(
-                "ADD_SECTIONS_CHAIN" => "N",
-                "CACHE_FILTER" => "N",
-                "CACHE_GROUPS" => "Y",
-                "CACHE_TIME" => "36000000",
-                "CACHE_TYPE" => "A",
-                "COUNT_ELEMENTS" => "N",
-                "FILTER_NAME" => "",
-                "IBLOCK_ID" => "1",
-                "IBLOCK_TYPE" => "catalog",
-                "SECTION_CODE" => "",
-                "SECTION_FIELDS" => array("", ""),
-                "SECTION_ID" => "",
-                "SECTION_URL" => "",
-                "SECTION_USER_FIELDS" => array("", ""),
-                "SHOW_PARENT_NAME" => "Y",
-                "TOP_DEPTH" => "2",
-                "VIEW_MODE" => "LINE"
-                    )
-            );
+            global $arTbParams;
+            $mainMenuType = !empty($arTbParams['MAIN_MENU_TYPE']) ? $arTbParams['MAIN_MENU_TYPE'] : 'TYPE_1';
             ?>
+            <? if ($mainMenuType == 'TYPE_1') { ?>
+                <?
+                $APPLICATION->IncludeComponent(
+                        "bitrix:catalog.section.list", "main-menu", Array(
+                    "ADD_SECTIONS_CHAIN" => "N",
+                    "CACHE_FILTER" => "N",
+                    "CACHE_GROUPS" => "Y",
+                    "CACHE_TIME" => "36000000",
+                    "CACHE_TYPE" => "A",
+                    "COUNT_ELEMENTS" => "N",
+                    "FILTER_NAME" => "",
+                    "IBLOCK_ID" => "1",
+                    "IBLOCK_TYPE" => "catalog",
+                    "SECTION_CODE" => "",
+                    "SECTION_FIELDS" => array("", ""),
+                    "SECTION_ID" => "",
+                    "SECTION_URL" => "",
+                    "SECTION_USER_FIELDS" => array("", ""),
+                    "SHOW_PARENT_NAME" => "Y",
+                    "TOP_DEPTH" => "3",
+                    "VIEW_MODE" => "LINE"
+                        )
+                );
+                ?>
+            <? } ?>
+            <? if ($mainMenuType == 'TYPE_2') { ?>
+                <?
+                $APPLICATION->IncludeComponent(
+                        "bitrix:catalog.section.list", "custom-menu", Array(
+                    "ADD_SECTIONS_CHAIN" => "N",
+                    "CACHE_FILTER" => "N",
+                    "CACHE_GROUPS" => "Y",
+                    "CACHE_TIME" => "36000000",
+                    "CACHE_TYPE" => "A",
+                    "COUNT_ELEMENTS" => "N",
+                    "FILTER_NAME" => "",
+                    "IBLOCK_ID" => "5",
+                    "IBLOCK_TYPE" => "service",
+                    "SECTION_CODE" => "",
+                    "SECTION_FIELDS" => array("", ""),
+                    "SECTION_ID" => "",
+                    "SECTION_URL" => "",
+                    "SECTION_USER_FIELDS" => array("UF_LINK", ""),
+                    "SHOW_PARENT_NAME" => "Y",
+                    "TOP_DEPTH" => "3",
+                    "VIEW_MODE" => "LINE"
+                        )
+                );
+                ?>
+            <? } ?>

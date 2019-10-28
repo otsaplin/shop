@@ -62,7 +62,7 @@ $arParams['PROPERTY_ARTICLE'] = !empty($arParams['PROPERTY_ARTICLE']) ? $arParam
                     <li><a class="counter__plus" href="#"><i class="fas fa-plus"></i></a></li>
                 </ul>
                 <img style="display:none;" src="<?=SITE_TEMPLATE_PATH;?>/assets/img/loading_btn.gif" />
-                <a class="btn btn_red btn-lg" href="#" data-id="<?=$arResult['ID'];?>" data-url="<?=$arResult['ADD_URL'];?>" data-loading-text="В корзину" data-loading-img="<?=SITE_TEMPLATE_PATH;?>/assets/img/loading_btn.gif" onClick="return addToBasket(this);">В корзину</a>
+                <a class="btn btn-primary btn-lg" href="#" data-id="<?=$arResult['ID'];?>" data-url="<?=$arResult['ADD_URL'];?>" data-loading-text="В корзину" data-loading-img="<?=SITE_TEMPLATE_PATH;?>/assets/img/loading_btn.gif" onClick="return addToBasket(this);">В корзину</a>
             </div>
         <? } else { ?>
             <p>Нет в наличии</p>

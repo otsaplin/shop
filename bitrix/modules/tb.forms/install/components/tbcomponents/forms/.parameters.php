@@ -82,6 +82,13 @@ $arComponentParameters = [
             "DEFAULT" => "Y",
             "REFRESH" => "N",
         ],
+        "USE_CAPTCHA" => [
+            "PARENT" => "BASE",
+            "NAME" => GetMessage("USE_CAPTCHA"),
+            "TYPE" => "CHECKBOX",
+            "DEFAULT" => "N",
+            "REFRESH" => "N",
+        ],
         "IBLOCK_TYPE" => [
             "PARENT" => "DATA_SOURCE",
             "NAME" => GetMessage("IBLOCK_TYPE"),

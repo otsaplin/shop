@@ -22,3 +22,4 @@ $MESS["FIELED_SAVE_PREVIEW_TEXT"] = "Описание для анонса";
 $MESS["FIELED_SAVE_DETAIL_TEXT"] = "Детальное описание";
 $MESS["REWRITE_DETAIL_TEXT"] = "Отменить сохранение конкатенации значений в DETAIL_TEXT";
 $MESS["ADMIN_NOTIFICATION"] = "Отправлять уведомление на E-mail администратора (из настроек конкретного сайта)";
+$MESS["USE_CAPTCHA"] = "Использовать CAPTCHA";

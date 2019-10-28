@@ -1,0 +1,13 @@
+@keyframes rotateReload {
+    from {transform:rotate(0deg);}
+    to {transform:rotate(360deg);}
+}
+
+.captcha__reload {
+    font-size: 1.3rem;
+    margin-left: 3px;
+}
+
+.captcha__reload.loading i {
+    animation: rotateReload 3s linear 0s infinite;
+}

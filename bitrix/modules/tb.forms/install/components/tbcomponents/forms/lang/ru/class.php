@@ -16,3 +16,4 @@ $MESS['FILER_FILES_SIZE'] = '{{fi-name}} слишком большой! Макс
 $MESS['FILER_FILES_SIZE_ALL'] = 'Слишкой большой общий размер файлов. Максимальный общий объем всех файлов {{fi-maxSize}} MB.';
 $MESS['FILER_FOLDER_UPLOAD'] = 'Ошибка загрузки в указанную папку.';
 $MESS['ERROR_GET_DATA'] = 'Ошибка получения указанного элемента.';
+$MESS['ERROR_CAPTCHA'] = 'Неверные символы с изображения';

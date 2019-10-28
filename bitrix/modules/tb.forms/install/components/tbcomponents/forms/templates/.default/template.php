@@ -94,6 +94,18 @@ if (IsModuleInstalled('tb.shop'))
                     <? break; ?>
             <? } ?>
         <? } ?>
+        <? if (!empty($arResult['CAPTCHA'])) { ?>
+            <div class="form-group row reg-captcha">
+                <div class="col-5">
+                    <input type="hidden" name="CAPTCHA_CODE" value="<?= $arResult['CAPTCHA']['CAPTCHA_CODE']; ?>" />
+                    <input type="text" id="<?= $arParams['FORM_ID']; ?>_CAPTCHA" name="CAPTCHA" class="form-control" placeholder="<?= Loc::getMessage('FORM_CAPTCHA'); ?>" />
+                </div>
+                <div class="col-7">
+                    <img class="captcha__img" src="<?= $arResult['CAPTCHA']['SRC']; ?>" />
+                    <a class="captcha__reload" href="#" onclick="return reloadCaptcha(this);"><i class="fas fa-sync-alt"></i></a>
+                </div>
+            </div>
+        <? } ?>
         <button type="submit" class="btn btn-md btn-primary" data-loading-text="<?= Loc::getMessage('FORM_BUTTON'); ?>" data-loading-img="<?= $loadingImg; ?>"><?= Loc::getMessage('FORM_BUTTON'); ?></button>
         <div class="alert alert-danger mt-4" role="alert" style="display: none;"><ul></ul></div>
         <div class="alert alert-success mt-4" role="alert" style="display: none;"><ul></ul></div>

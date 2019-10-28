@@ -24,7 +24,7 @@ global $APPLICATION;
         <? } ?>
     <? } ?>
     <div class="text-center">
-        <button type="submit" class="btn btn-md btn_red" data-loading-text="<?= $arResult['arForm']['BUTTON']; ?>" data-loading-img="<?= SITE_TEMPLATE_PATH; ?>/assets/img/loading_btn.gif"><?= $arResult['arForm']['BUTTON']; ?></button>
+        <button type="submit" class="btn btn-md btn-primary" data-loading-text="<?= $arResult['arForm']['BUTTON']; ?>" data-loading-img="<?= SITE_TEMPLATE_PATH; ?>/assets/img/loading_btn.gif"><?= $arResult['arForm']['BUTTON']; ?></button>
     </div>
     <div class="alert alert-danger mt-4" role="alert" style="display: none;"></div>
     <div class="alert alert-success mt-4" role="alert" style="display: none;"><?= $arParams['SUCCESS_TEXT']; ?></div>

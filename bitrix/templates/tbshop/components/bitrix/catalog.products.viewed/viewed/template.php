@@ -19,7 +19,7 @@ if (!defined("B_PROLOG_INCLUDED") || B_PROLOG_INCLUDED !== true)
                             <a href="<?= $arItem['DETAIL_PAGE_URL']; ?>"><?= $arItem['NAME']; ?></a>
                         </div>
                         <div class="text-center">
-                            <a class="btn btn_red btn__add-to-basket" href="#" data-id="<?= $arItem['ID']; ?>" data-url="<?= $arItem['ADD_URL']; ?>" data-loading-text="В корзину" data-loading-img="<?= SITE_TEMPLATE_PATH; ?>/assets/img/loading_btn.gif" onClick="return addToBasket(this);">В корзину</a>
+                            <a class="btn btn-primary btn__add-to-basket" href="#" data-id="<?= $arItem['ID']; ?>" data-url="<?= $arItem['ADD_URL']; ?>" data-loading-text="В корзину" data-loading-img="<?= SITE_TEMPLATE_PATH; ?>/assets/img/loading_btn.gif" onClick="return addToBasket(this);">В корзину</a>
                         </div>
                     </div>
                 </div>

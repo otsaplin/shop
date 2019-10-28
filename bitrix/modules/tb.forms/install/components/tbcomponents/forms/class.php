@@ -2,6 +2,7 @@
 
 define("LOG_FILENAME", $_SERVER["DOCUMENT_ROOT"] . "/local/log.txt");
 
+use \Bitrix\Main\Config\Option;
 use \Bitrix\Main\Page\Asset;
 use \Bitrix\Main\Web\Json;
 use \Bitrix\Main\Localization\Loc;
@@ -107,6 +108,14 @@ class TbFormsComponent extends CBitrixComponent
                     'MESSAGE' => Loc::getMessage('ERROR_BITRIX_SESSID'),
                 ];
 
+            // captcha
+            if ($arParams['USE_CAPTCHA'] == 'Y')
+                if (!$this->checkCaptcha())
+                    $arErrors[] = [
+                        'NAME' => 'CAPTCHA',
+                        'MESSAGE' => Loc::getMessage('ERROR_CAPTCHA'),
+                    ];
+
             // validation
             $arRules = $this->getRules();
             $rsValid = $obForm->doValidation(array_merge($_REQUEST, $_FILES), $arRules);
@@ -146,6 +155,16 @@ class TbFormsComponent extends CBitrixComponent
                     ];
                 }
             }
+        }
+
+        // captcha
+        if ($arParams['USE_CAPTCHA'] == 'Y')
+            $arResult['CAPTCHA'] = $this->getCaptcha();
+
+        // reload captcha
+        if (!empty($_REQUEST['AJAX_RELOAD_CAPTCHA'])) {
+            $APPLICATION->RestartBuffer();
+            die(Json::encode(['CAPTCHA' => $arResult['CAPTCHA']]));
         }
 
         if (!empty($arErrors))
@@ -487,6 +506,29 @@ class TbFormsComponent extends CBitrixComponent
         ];
 
         return $arResult;
+    }
+
+    public function getCaptcha()
+    {
+        require_once $_SERVER["DOCUMENT_ROOT"] . '/bitrix/modules/main/classes/general/captcha.php';
+        $cpt = new \CCaptcha();
+        $captchaPass = Option::get('main', 'captcha_password', '');
+        $cpt->SetCodeCrypt($captchaPass);
+
+        return [
+            'CAPTCHA_CODE' => $cpt->GetCodeCrypt(),
+            'SRC' => '/bitrix/tools/captcha.php?captcha_code=' . $cpt->GetCodeCrypt()
+        ];
+    }
+
+    public function checkCaptcha()
+    {
+        global $APPLICATION;
+
+        if (!$APPLICATION->CaptchaCheckCode($_REQUEST["CAPTCHA"], $_REQUEST['CAPTCHA_CODE']))
+            return false;
+
+        return true;
     }
 
 }

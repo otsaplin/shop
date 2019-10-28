@@ -125,7 +125,7 @@ global $USER;
             <div class="modal-body"></div>
             <div class="modal-footer">
                 <a href="#" class="mr-3" data-dismiss="modal">Продолжить покупки</a>
-                <a href="/basket/" class="btn btn_red">Оформить заказ</a>
+                <a href="/basket/" class="btn btn-primary">Оформить заказ</a>
             </div>
         </div>
     </div>
